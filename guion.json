@@ -1,0 +1,14 @@
+{
+    "kambala": {
+        "qué día es hoy": "videos/kambala_dia.mp4",
+        "castores": "videos/castorbb.mp4"
+    },
+    "avatar dos": {
+        "quién eres": "videos/avatar2_presentacion.mp4",
+        "cuál es el plan": "videos/avatar2_plan.mp4"
+    },
+    "avatar tres": {
+        "estás listo": "videos/avatar3_listo.mp4",
+        "apaga el sistema": "videos/avatar3_apagar.mp4"
+    }
+}
