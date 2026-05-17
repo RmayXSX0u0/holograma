@@ -39,6 +39,8 @@ def voz(avatar, texto_respuesta, accion):
 def escuchar_y_procesar(guion):
     r = sr.Recognizer()
 
+    r.pause_threshold = 2.0 # 2 segundos antesde cortar la grabacion
+    r.non_speaking_duration = 0.5
     with sr.Microphone(device_index=1) as source: # device_index=1 es el puerto del microfono "19" es para un microfono externo
         print("ajustando sonido ")
         r.adjust_for_ambient_noise(source, duration=2)
@@ -47,21 +49,26 @@ def escuchar_y_procesar(guion):
         while True:
             try:
                 #escucha constantemente con el timeout = none
-                audio = r.listen(source, timeout=None, phrase_time_limit=6)
+                audio = r.listen(source, timeout=None)
                 #audio a google
-                texto = r.recognize_google(audio, language="es-MX").lower()
-                print(f"usuario dijo: '{texto}'")
+                texto_crudo = r.recognize_google(audio, language="es-MX").lower()
+                texto_limpio = texto_crudo.replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
+                print(f"usuario dijo: '{texto_crudo}' limpio: '{texto_limpio}'")
+
+                if "apagate" in texto_limpio or "apaga el sistema" in texto_limpio:
+                    print("apagando el sistema")
+                    mensaje = "sistema|NONE|apagar_todo"
+                    cable_udp.sendto(mensaje.encode('utf-8'), (IP_UNITY, PUERTO_UNITY))
+                    break
 
                 #buisqueda en guion
                 for avatar, dialogos in guion.items():
-                    #mencion del nombre del avatar
-                    if avatar.lower() in texto:
                         #busca frase clave del guion
                         for frase_clave, datos in dialogos.items():
-                            if frase_clave.lower() in texto:
+                            if avatar.lower() in texto_limpio and frase_clave.lower() in texto_limpio:
                                 print(f"Coincide '{frase_clave}'")
                                 voz(avatar, datos["texto"], datos["accion"])
-                                time.sleep(3) # para que el micro no se escuche solo
+                                time.sleep(4) # para que el micro no se escuche solo
                                 break
                         break
             except sr.UnknownValueError:

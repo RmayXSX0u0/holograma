@@ -1,20 +1,20 @@
 {
-    "caine": {
-        "avances hicimos este sexenio": {
+    "ramon": {
+        "avances": {
             "texto": "Claro que sí, rectora. Durante este sexenio se lograron diferentes avances. ¿Por cuál facultad le gustaría empezar?",
             "accion": "ninguna"
         },
-        "ciencias de la información": {
+        "ciencias": {
             "texto": "Excelente elección. Durante este sexenio tuvimos grandes avances en esa facultad, comenzando por la sala verde.",
             "accion": "video_sala_verde"
         },
-        "sala de las macs": {
+        "macs": {
             "texto": "Y por supuesto, también está la sala de las computadoras Mac.",
             "accion": "video_macs"
         }
     },
     "rectora": {
-        "estadísticas de los alumnos": {
+        "estadisticas": {
             "texto": "",
             "accion": "imagen_estadisticas"
         }
