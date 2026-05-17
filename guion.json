@@ -1,14 +1,22 @@
 {
-    "carlitos": {
-        "pon videos de castores": "videos/kambala_dia.mp4",
-        "castores": "Los castores son unos de los animales mas bonitos que erxisten en la tierra"
+    "caine": {
+        "avances hicimos este sexenio": {
+            "texto": "Claro que sí, rectora. Durante este sexenio se lograron diferentes avances. ¿Por cuál facultad le gustaría empezar?",
+            "accion": "ninguna"
+        },
+        "ciencias de la información": {
+            "texto": "Excelente elección. Durante este sexenio tuvimos grandes avances en esa facultad, comenzando por la sala verde.",
+            "accion": "video_sala_verde"
+        },
+        "sala de las macs": {
+            "texto": "Y por supuesto, también está la sala de las computadoras Mac.",
+            "accion": "video_macs"
+        }
     },
-    "axelito": {
-        "quién eres": "videos/avatar2_presentacion.mp4",
-        "cuál es el plan": "videos/avatar2_plan.mp4"
-    },
-    "diana paola nieto arjona": {
-        "estás listo": "videos/avatar3_listo.mp4",
-        "apaga el sistema": "videos/avatar3_apagar.mp4"
+    "rectora": {
+        "estadísticas de los alumnos": {
+            "texto": "",
+            "accion": "imagen_estadisticas"
+        }
     }
 }
