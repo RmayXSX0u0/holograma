@@ -3,7 +3,7 @@ import json
 import time
 import os
 from gtts import gTTS
-from pythonosc import udp_client
+import socket
 
 DIRECTORIO_ACTUAL = os.path.dirname(os.path.abspath(__file__))
 CARPETA_AUDIOS = os.path.join(DIRECTORIO_ACTUAL, "audios_generados")
@@ -13,22 +13,28 @@ if not os.path.exists(CARPETA_AUDIOS):
 
 IP_UNITY = "127.0.0.1"
 PUERTO_UNITY = 5005
-cliente_osc = udp_client.SimpleUDPClient(IP_UNITY, PUERTO_UNITY)
+cable_udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 def guion(ruta_json): #carga guion
     ruta_completa_json = os.path.join(DIRECTORIO_ACTUAL, ruta_json)
     with open(ruta_json, "r", encoding="utf-8") as archivo:
         return json.load(archivo)
 
-def voz(avatar, texto_respuesta):
-    print(f"[{avatar.upper()}] generando voz para: '{texto_respuesta}'")
-    nombre_limpio = avatar.replace("", "_")
-    ruta_audio = os.path.join(CARPETA_AUDIOS, f"respuesta_{nombre_limpio}.mp3")
-    #google TTS genera el audio
-    tts = gTTS(text=texto_respuesta, lang='es', tld='com.mx')
-    tts.save(ruta_audio)
-    cliente_osc.send_message("/holograma/hablar", [avatar, ruta_audio]) # envia la orden a unity
-    print(f"audio guardado en: {avatar.upper()}")
+def voz(avatar, texto_respuesta, accion):
+    ruta_audio= "NONE"
+    if texto_respuesta.strip():
+        print(f"[{avatar.upper()}] generando voz para: '{texto_respuesta}'")
+        nombre_limpio = avatar.replace("", "_")
+        ruta_audio = os.path.join(CARPETA_AUDIOS, f"respuesta_{nombre_limpio}.mp3")
+        #google TTS genera el audio
+        tts = gTTS(text=texto_respuesta, lang='es', tld='com.mx')
+        tts.save(ruta_audio)
+    else:
+        print(f"[{avatar.upper()}] disparando accion")
+    
+    mensaje = f"{avatar}|{ruta_audio}|{accion}"
+    cable_udp.sendto(mensaje.encode('utf-8'), ("127.0.0.1", 5005)) # envia la orden a unity
+    print(f"mensaje enviado {accion}")
 
 def escuchar_y_procesar(guion):
     r = sr.Recognizer()
@@ -41,7 +47,7 @@ def escuchar_y_procesar(guion):
         while True:
             try:
                 #escucha constantemente con el timeout = none
-                audio = r.listen(source, timeout=None, phrase_time_limit=5)
+                audio = r.listen(source, timeout=None, phrase_time_limit=6)
                 #audio a google
                 texto = r.recognize_google(audio, language="es-MX").lower()
                 print(f"usuario dijo: '{texto}'")
@@ -51,10 +57,10 @@ def escuchar_y_procesar(guion):
                     #mencion del nombre del avatar
                     if avatar.lower() in texto:
                         #busca frase clave del guion
-                        for frase_clave, texto_respuesta in dialogos.items():
+                        for frase_clave, datos in dialogos.items():
                             if frase_clave.lower() in texto:
-                                print(f"Coincide {avatar.upper()}")
-                                voz(avatar, texto_respuesta)
+                                print(f"Coincide '{frase_clave}'")
+                                voz(avatar, datos["texto"], datos["accion"])
                                 time.sleep(3) # para que el micro no se escuche solo
                                 break
                         break
