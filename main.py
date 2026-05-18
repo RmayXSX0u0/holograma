@@ -62,15 +62,19 @@ def escuchar_y_procesar(guion):
                     break
 
                 #buisqueda en guion
+                match_encontrado = False
                 for avatar, dialogos in guion.items():
                         #busca frase clave del guion
                         for frase_clave, datos in dialogos.items():
-                            if avatar.lower() in texto_limpio and frase_clave.lower() in texto_limpio:
+                            
+                            if frase_clave.lower() in texto_limpio:
                                 print(f"Coincide '{frase_clave}'")
                                 voz(avatar, datos["texto"], datos["accion"])
                                 time.sleep(4) # para que el micro no se escuche solo
+                                match_encontrado = True
                                 break
-                        break
+                        if match_encontrado:
+                            break
             except sr.UnknownValueError:
                 #si no entendio pasa desapercibido
                 pass
