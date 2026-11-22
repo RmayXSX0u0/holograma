@@ -1,22 +1,89 @@
 {
-    "ramon": {
-        "avances": {
-            "texto": "Claro que sí, rectora. Durante este sexenio se lograron diferentes avances. ¿Por cuál facultad le gustaría empezar?",
-            "accion": "ninguna"
-        },
-        "ciencias de la informacion": {
-            "texto": "Excelente elección. Durante este sexenio tuvimos grandes avances en esa facultad, comenzando por la sala verde.",
-            "accion": "video_sala_verde"
-        },
-        "salas": {
-            "texto": "Y por supuesto, también está la sala de las computadoras Mac.",
-            "accion": "video_macs"
-        }
+  "rectora": {
+    "fallback": {
+      "texto": "Disculpa, no te oi bien podrias volver a repetirlo.",
+      "accion": ["reir", "hablando1"]
     },
-    "rectora": {
-        "estadisticas de los alumnos": {
-            "texto": "",
-            "accion": "imagen_estadisticas"
-        }
+    "iniciar": {
+        "texto": "Hola, bienvenido, dime en que te puedo ayudar?",
+        "accion": "inicio",
+        "loop": false
+    },
+    "desarrollo de la universidad": {
+        "texto": "La imagino como una institución cada vez más innovadora, vinculada con su entorno y comprometida con la generación de conocimiento. Aspiro a que nuestros estudiantes encuentren aquí un espacio para crecer, desarrollar sus capacidades y construir proyectos de vida. También considero fundamental que nuestra universidad tenga una presencia cada vez más importante en la solución de los problemas de nuestra comunidad.",
+        "accion": ["hablando1","hablando2"]
+    },
+    "vision de su administracion": {
+        "texto": "Consolidar una universidad de calidad, incluyente y socialmente responsable, con reconocimiento nacional por sus programas educativos y por su capacidad de responder a las necesidades de nuestro entorno.",
+      "accion": ["hablando2","hablando1"]
+    },
+    "informe de actividades": {
+      "texto": "Es un ejercicio de rendición de cuentas ante el Honorable Consejo Universitario y la comunidad. En él damos a conocer los avances, los logros y los retos del periodo, conforme al Plan de Desarrollo Institucional.",
+      "accion": "animacion_pensando"
+    },
+    "principales logros": {
+      "texto": "Destacamos el fortalecimiento de la calidad educativa, el impulso a la investigación y la vinculación, y las acciones de bienestar estudiantil.",
+      "accion": "hablando2"
+    },
+    "papel de la comunidad universitaria": {
+      "texto": "La comunidad universitaria es el corazón y la fuerza transformadora de la UNACAR. Ninguna política institucional puede rendir frutos sin la participación activa, consciente y decidida de nuestros estudiantes, claustro académico y personal administrativo y de servicios.",
+      "accion": ["reir", "hablando2"]
+    },
+    "oferta academica": {
+      "texto": "Nuestra universidad ofrece una gama amplia, diversa y pertinente de programas educativos distribuidos estratégicamente en tres campus y la escuela preparatoria. En el Campus Principal albergamos las facultades de Ciencias Económico-Administrativas, Derecho, Ciencias Educativas, Ciencias de la Información y Química. En el Campus Tres se concentran las facultades de Ciencias de la Salud, Ciencias Naturales e Ingeniería, mientras que en el Campus Dos brindamos educación media superior de excelencia.",
+      "accion": "hablando1"
+    },
+    "retos de la universidad": {
+      "texto": "Los principales retos son la sostenibilidad financiera, la actualización permanente de la oferta educativa y la modernización de la infraestructura. Debemos trabajar de manera conjunta, ya que se atienden con planeación, trabajo colegiado y responsabilidad.",
+      "accion": "animacion_pensando"
+    },
+    "apoyos al estudiante": {
+      "texto": "Contamos con becas, tutorías, orientación psicológica, actividades deportivas y culturales, y servicios de salud, con el propósito de favorecer la permanencia y el egreso oportuno.",
+      "accion": "hablando2"
+    },
+    "calidad educativa": {
+      "texto": "Esto requiere un trabajo permanente. No es un objetivo que se alcance una sola vez, sino un proceso continuo de evaluación y mejora. Es necesario revisar nuestros programas académicos, fortalecer la preparación docente e incorporar nuevas herramientas tecnológicas.",
+      "accion": "hablando2"
+    },
+    "tecnologia en la educacion": {
+      "texto": "Claro, la tecnología se ha convertido en una herramienta indispensable para la educación contemporánea. Sin embargo, debemos entender que la tecnología es un medio y no un fin. Esta debe responder a objetivos pedagógicos concretos y contribuir verdaderamente al aprendizaje.",
+      "accion": "hablando1"
+    },
+    "fomentar la innovacion": {
+      "texto": "La innovación comienza cuando permitimos que nuestros estudiantes cuestionen, propongan y experimenten. Se deben generar espacios donde tengan la posibilidad de desarrollar proyectos, trabajar y encontrar soluciones creativas a diferentes problemáticas.",
+      "accion": "hablando2"
+    },
+    "situaciones de conflicto": {
+      "texto": "Debemos considerar que los conflictos forman parte de cualquier comunidad y la institución universitaria no es la excepción. Lo importante es abordarlos mediante el diálogo, el respeto y los medios institucionales correspondientes, analizando objetivamente cada situación.",
+      "accion": ["animacion_pensando","hablando1","hablando2"]
+    },
+    "abandonar estudios": {
+      "texto": "Sabemos que existen dificultades académicas, económicas o personales y que las emociones pueden afectar la trayectoria de un estudiante. En este aspecto les diría que antes de tomar una decisión definitiva busquen orientación y permitan conocer las razones que los están llevando a considerar esa posibilidad.",
+      "accion": "hablando1"
+    },
+    "vinculacion con empresas": {
+      "texto": "La vinculación es fundamental porque permite acercar la formación académica a las necesidades reales del sector productivo.",
+      "accion": "hablando2"
+    },
+    "criticas hacia la institucion": {
+      "texto": "Las críticas, cuando se realizan de manera responsable, pueden convertirse en una herramienta muy importante para mejorar en todos los aspectos posibles. Debemos tener la madurez para reconocer aquello que debemos mejorar y convertir esas observaciones en acciones concretas.",
+      "accion": "animacion_pensando"
+    },
+    "voz de los estudiantes": {
+      "texto": "Su voz y participación son importantes, y debemos fortalecer permanentemente los mecanismos de comunicación hacia ellos. Como institución tenemos la responsabilidad de escuchar y también la de construir soluciones mediante el diálogo y la participación.",
+      "accion": "aplaudir"
+    },
+    "equidad inclusion y diversidad": {
+      "texto": "Reiteramos nuestro compromiso firme de ser una institución inclusiva, libre de cualquier forma de violencia o discriminación motivada por origen étnico, condición socioeconómica, discapacidad u orientación sexual.",
+      "accion": "hablando2"
+    },
+    "huella ecologica": {
+      "texto": "Como institución, la UNACAR asume con el ejemplo la gestión ambiental eficiente de sus instalaciones. Fomentamos la reforestación con especies nativas y promovemos una cultura de movilidad sustentable.",
+      "accion": "hablando1"
+    },
+    "mensaje nuevas generaciones": {
+      "texto": "A cada joven que está por contemplar o que ha elegido a la UNACAR para construir su futuro profesional, le digo con absoluta alegría: ¡bienvenidos a su casa! La UNACAR no solo es un espacio académico, es un entorno donde sus aspiraciones encontrarán el impulso, la guía y las herramientas adecuadas para materializarse.",
+      "accion": "saludar"
     }
+  }
 }
